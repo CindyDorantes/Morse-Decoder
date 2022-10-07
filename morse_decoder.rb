@@ -27,22 +27,20 @@
 }
 
 def decode_char(char)
-  @code.each { |key, letter|
-    if char === key then
-      return letter
-    end
-  }
+  @code.each do |key, letter|
+    letter if char == key
+  end
 end
 
 def decode_word(word)
-  @wordTranslated = word.split(/ /).map { |char| decode_char(char) }.join
+  @word_translated = word.split(/ /).map { |char| decode_char(char) }.join
 end
 
 def decode_message(sentence)
-  @sentenceTranslated = sentence.split(/   /).map { |word| decode_word(word) }.join(' ')
+  @sentence_translated = sentence.split(/   /).map { |word| decode_word(word) }.join(' ')
 end
 
 @message = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
-@messageTranslated = decode_message(@message)
-print "The old bottle morse code message .-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...
-    means: #{@messageTranslated}"
+@message_translated = decode_message(@message)
+puts "The old bottle morse code message .-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...
+means: #{@messageTranslated}"
