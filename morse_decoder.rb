@@ -28,7 +28,7 @@
 
 def decode_char(char)
   @code.each do |key, letter|
-    letter if char == key
+    return letter if char == key
   end
 end
 
